@@ -1,0 +1,36 @@
+{
+  "name": "sansanlabs-laravel-git-ftp-deployer",
+  "description": "Package to add git ftp deployer to models.",
+  "keywords": [
+    "laravel",
+    "eloquent",
+    "git ftp deployer",
+    "created_by",
+    "updated_by",
+    "deleted_by",
+    "creator",
+    "editor",
+    "destroyer",
+    "model-events"
+  ],
+  "homepage": "https://github.com/sansanlabs/laravel-git-ftp-deployer#readme",
+  "bugs": {
+    "url": "https://github.com/sansanlabs/laravel-git-ftp-deployer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sansanlabs/laravel-git-ftp-deployer.git"
+  },
+  "scripts": {
+    "prettier": "npx prettier . --write --ignore-path .prettierignore"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Edi Kurniawan",
+    "email": "edikurniawan.dev@gmail.com"
+  },
+  "devDependencies": {
+    "@prettier/plugin-php": "^0.22.4",
+    "prettier": "^3.5.3"
+  }
+}
