@@ -1,10 +1,13 @@
 {
   "name": "sansanlabs/laravel-git-ftp-deployer",
-  "description": ":package_description",
+  "description": "Laravel Git-FTP deployment package with git status checking and build integration",
   "keywords": [
-    ":vendor_name",
+    "sansanlabs",
     "laravel",
-    "laravel-git-ftp-deployer"
+    "laravel-git-ftp-deployer",
+    "ftp",
+    "deployment",
+    "git-ftp"
   ],
   "homepage": "https://github.com/sansanlabs/laravel-git-ftp-deployer",
   "license": "MIT",
