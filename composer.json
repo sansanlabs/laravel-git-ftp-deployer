@@ -35,13 +35,12 @@
   },
   "autoload": {
     "psr-4": {
-      "VendorName\\Skeleton\\": "src/",
-      "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+      "SanSanLabs\\GitFtpDeployer\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "VendorName\\Skeleton\\Tests\\": "tests/",
+      "SanSanLabs\\GitFtpDeployer\\Tests\\": "tests/",
       "Workbench\\App\\": "workbench/app/"
     }
   },
@@ -63,10 +62,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "VendorName\\Skeleton\\SkeletonServiceProvider"
+        "SanSanLabs\\GitFtpDeployer\\GitFtpDeployerServiceProvider"
       ],
       "aliases": {
-        "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+        "GitFtpDeployer": "SanSanLabs\\GitFtpDeployer\\Facades\\GitFtpDeployer"
       }
     }
   },
