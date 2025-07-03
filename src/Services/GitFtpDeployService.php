@@ -5,88 +5,83 @@ namespace Sansanlabs\GitFtpDeployer\Services;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 
-class GitFtpDeployService
-{
-    public function validateEnvironment(string $environment): bool
-    {
-        $environments = config('git-ftp-deployer.environments');
+class GitFtpDeployService {
+  public function validateEnvironment(string $environment): bool {
+    $environments = config("git-ftp-deployer.environments");
 
-        if (! isset($environments[$environment])) {
-            return false;
-        }
-
-        $config = $environments[$environment];
-
-        return ! empty($config['host']) && ! empty($config['username']) && ! empty($config['password']);
+    if (!isset($environments[$environment])) {
+      return false;
     }
 
-    public function deploy(string $environment, Command $command): bool
-    {
-        $config = config("git-ftp-deployer.environments.{$environment}");
+    $config = $environments[$environment];
 
-        $command->info("Deploying to {$environment} environment...");
-        $command->line("• Host: <fg=cyan>{$config['host']}</>");
-        $command->line("• Path: <fg=cyan>{$config['path']}</>");
-        $command->line('');
+    return !empty($config["host"]) && !empty($config["username"]) && !empty($config["password"]);
+  }
 
-        $gitFtpCommand = $this->buildGitFtpCommand($config);
-        $process = $this->createFtpProcess($gitFtpCommand);
+  public function deploy(string $environment, Command $command): bool {
+    $config = config("git-ftp-deployer.environments.{$environment}");
 
-        $process->run(function ($type, $buffer): void {
-            echo $buffer;
-        });
+    $command->info("Deploying to {$environment} environment...");
+    $command->line("• Host: <fg=cyan>{$config["host"]}</>");
+    $command->line("• Path: <fg=cyan>{$config["path"]}</>");
+    $command->line("");
 
-        if (! $process->isSuccessful()) {
-            $command->error('Git-FTP deployment failed.');
-            $command->line('');
-            $command->line('Common issues:');
-            $command->line('• Make sure git-ftp is installed on your system');
-            $command->line('• Verify your FTP credentials are correct');
-            $command->line('• Check if the remote path exists and is writable');
-            $command->line('• Ensure your git repository has at least one commit');
+    $gitFtpCommand = $this->buildGitFtpCommand($config);
+    $process = $this->createFtpProcess($gitFtpCommand);
 
-            return false;
-        }
+    $process->run(function ($type, $buffer): void {
+      echo $buffer;
+    });
 
-        $command->info('Git-FTP deployment completed successfully');
+    if (!$process->isSuccessful()) {
+      $command->error("Git-FTP deployment failed.");
+      $command->line("");
+      $command->line("Common issues:");
+      $command->line("• Make sure git-ftp is installed on your system");
+      $command->line("• Verify your FTP credentials are correct");
+      $command->line("• Check if the remote path exists and is writable");
+      $command->line("• Ensure your git repository has at least one commit");
 
-        return true;
+      return false;
     }
 
-    protected function buildGitFtpCommand(array $config): string
-    {
-        $options = config('git-ftp-deployer.git_ftp_options');
-        $host = $config['host'];
-        $username = $config['username'];
-        $password = $config['password'];
-        $path = $config['path'] ?? '/website/';
+    $command->info("Git-FTP deployment completed successfully");
 
-        $command = 'git-ftp push';
+    return true;
+  }
 
-        if ($options['force'] ?? false) {
-            $command .= ' --force';
-        }
+  protected function buildGitFtpCommand(array $config): string {
+    $options = config("git-ftp-deployer.git_ftp_options");
+    $host = $config["host"];
+    $username = $config["username"];
+    $password = $config["password"];
+    $path = $config["path"] ?? "/website/";
 
-        if ($options['verbose'] ?? false) {
-            $command .= ' --verbose';
-        }
+    $command = "git-ftp push";
 
-        if ($options['auto_init'] ?? false) {
-            $command .= ' --auto-init';
-        }
-
-        $command .= " --user \"$username\"";
-        $command .= " --passwd \"$password\"";
-        $command .= " --syncroot . $host$path";
-
-        return $command;
+    if ($options["force"] ?? false) {
+      $command .= " --force";
     }
 
-    protected function createFtpProcess(string $gitFtpCommand): Process
-    {
-        $gitBashPath = config('git-ftp-deployer.git_bash_path');
-        $gitBashPath = '"'.$gitBashPath.'"';
-
-        return Process::fromShellCommandline("{$gitBashPath} -c '$gitFtpCommand'");
+    if ($options["verbose"] ?? false) {
+      $command .= " --verbose";
     }
+
+    if ($options["auto_init"] ?? false) {
+      $command .= " --auto-init";
+    }
+
+    $command .= " --user \"$username\"";
+    $command .= " --passwd \"$password\"";
+    $command .= " --syncroot . $host$path";
+
+    return $command;
+  }
+
+  protected function createFtpProcess(string $gitFtpCommand): Process {
+    $gitBashPath = config("git-ftp-deployer.git_bash_path");
+    $gitBashPath = '"' . $gitBashPath . '"';
+
+    return Process::fromShellCommandline("{$gitBashPath} -c '$gitFtpCommand'");
+  }
 }
