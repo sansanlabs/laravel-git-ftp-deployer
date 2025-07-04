@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-git-ftp-deployer` will be documented in this file.
 
+## v1.2.0 - 2025-07-04
+
+**Full Changelog**: https://github.com/sansanlabs/laravel-git-ftp-deployer/compare/v1.1.0...v1.2.0
+
 ## v1.1.0 - 2025-07-04
 
 ### What's Changed
