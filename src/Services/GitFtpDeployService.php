@@ -82,6 +82,6 @@ class GitFtpDeployService {
     $gitBashPath = config("git-ftp-deployer.git_bash_path");
     $gitBashPath = '"' . $gitBashPath . '"';
 
-    return Process::fromShellCommandline("{$gitBashPath} -c '$gitFtpCommand'");
+    return Process::fromShellCommandline("{$gitBashPath} -c '$gitFtpCommand'")->setTimeout(null);
   }
 }

@@ -91,6 +91,7 @@ class GitFtpDeployerCommand extends Command {
     $this->info("Running build command: {$buildCommand}");
 
     $process = Process::fromShellCommandline($buildCommand);
+    $process->setTimeout(null);
     $process->setTty(Process::isTtySupported());
     $process->run(function ($type, $buffer): void {
       echo $buffer;
