@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-git-ftp-deployer` will be documented in this file.
 
+## v1.1.0 - 2025-07-04
+
+### What's Changed
+
+* build(deps): bump actions/setup-node from 3 to 4 by @dependabot in https://github.com/sansanlabs/laravel-git-ftp-deployer/pull/2
+
+**Full Changelog**: https://github.com/sansanlabs/laravel-git-ftp-deployer/compare/v1.0.2...v1.1.0
+
 ## v1.0.2 - 2025-07-03
 
 **Full Changelog**: https://github.com/sansanlabs/laravel-git-ftp-deployer/compare/v1.0.1...v1.0.2
