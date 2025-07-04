@@ -3,8 +3,8 @@
 namespace SanSanLabs\GitFtpDeployer\Commands;
 
 use Illuminate\Console\Command;
-use Sansanlabs\GitFtpDeployer\Services\GitFtpDeployService;
-use Sansanlabs\GitFtpDeployer\Services\GitStatusService;
+use SanSanLabs\GitFtpDeployer\Services\GitFtpDeployService;
+use SanSanLabs\GitFtpDeployer\Services\GitStatusService;
 use Symfony\Component\Process\Process;
 
 class GitFtpDeployerCommand extends Command {

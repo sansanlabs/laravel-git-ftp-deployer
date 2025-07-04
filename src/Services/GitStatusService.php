@@ -1,6 +1,6 @@
 <?php
 
-namespace Sansanlabs\GitFtpDeployer\Services;
+namespace SanSanLabs\GitFtpDeployer\Services;
 
 use Illuminate\Console\Command;
 use RuntimeException;

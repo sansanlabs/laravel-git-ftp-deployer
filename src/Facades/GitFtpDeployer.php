@@ -9,6 +9,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class GitFtpDeployer extends Facade {
   protected static function getFacadeAccessor() {
-    return \Sansanlabs\GitFtpDeployer\GitFtpDeployer::class;
+    return \SanSanLabs\GitFtpDeployer\GitFtpDeployer::class;
   }
 }
